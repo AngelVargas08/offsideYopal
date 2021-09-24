@@ -6,7 +6,7 @@ import 'package:offside_yopal/models/product.dart';
 
  var conexion = FirebaseDatabase.instance.reference();
 
- 
+ var admin;
 
 class ProductCard extends StatelessWidget {
   
@@ -19,29 +19,29 @@ class ProductCard extends StatelessWidget {
    
   @override
   Widget build(BuildContext context) {
+    
 
-    conexion.child("canchas").once().then((resul){
-     // final po = resul.value[];
-     
+     conexion.child("canchas").orderByChild('idAdmin').equalTo(globalUser).once()
+     .then((DataSnapshot snapshot) {
 
-      
-          
-    });
+        Map<dynamic,dynamic> map = snapshot.value;
+        map.forEach((key, value) { 
+             print(['------------']);
+           admin = (value['idAdmin']);
+        });
+       
+            
 
-    conexion.child("canchas").child("idAdmin").once().then((ja){
-          
-    });
 
-     conexion.child("canchas").orderByChild('idAdmin').equalTo(globalUser).once().then((datos) {
+       /*
        print('************************');
-          print(datos.value['name']);
-         
-        
-        // final index = this.products.indexWhere((element) => element.id == product.id);
-     });
-
-
-    //conexion.child("canchas").
+       print(snapshot.value);
+       
+       var ome = snapshot.value.entries.elementAt(1).key;
+          print(':::::::::::::');
+          print(ome);
+                        */
+    });
     
     return Padding(
       
@@ -51,10 +51,12 @@ class ProductCard extends StatelessWidget {
           width: double.infinity,
           height: 400,
           decoration: _cardBorders(),
+         
           child: Stack(
             alignment: Alignment.bottomLeft,
-            children: [
-              //if(){},
+             
+            children: [     
+       
               _BackgroungImage(product.picture),
               _ProductDetails(
                 title: product.name,

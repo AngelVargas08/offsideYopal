@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/home/loading_products.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/home/product_card.dart';
 import 'package:flutter_meedu/router.dart' as router;
+import 'package:offside_yopal/app/ui/pages/home_user/tabs/home/map.dart';
 import 'package:offside_yopal/app/ui/routes/routes.dart';
 import 'package:offside_yopal/models/models.dart';
 import 'package:offside_yopal/services/products_services.dart';
@@ -23,10 +24,31 @@ class HometabUser extends StatelessWidget {
      
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('User'),
-        automaticallyImplyLeading: false,
-      ),
+      
+          body: OrientationBuilder(
+            builder: (_,orientation) {
+              if(orientation==Orientation.portrait){
+                return MyMap();
+              }
+              return Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  color: Colors.red,
+                )
+                ),
+              Expanded(
+                flex: 2,
+                child: MyMap(),
+              )
+            ],
+          );
+            }
+            ,),
+
+
+
     );
     
     

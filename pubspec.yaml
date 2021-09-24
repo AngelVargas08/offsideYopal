@@ -45,8 +45,8 @@ dependencies:
   http: ^0.13.3  
   image_picker: ^0.8.4+1
   provider: ^5.0.0
-  
-
+  flutter_map: 0.14.0
+  geolocator: ^7.6.2  
 
 
 dev_dependencies:
@@ -75,6 +75,7 @@ flutter:
   assets:
     - assets/images/dark/
     - assets/images/ligth/
+    - assets/images/map/
     
     
     
