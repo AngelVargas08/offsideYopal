@@ -9,6 +9,7 @@ import 'package:flutter_meedu/router.dart' as router;
 
 
 
+ 
 
 void main() async{
   
@@ -32,6 +33,7 @@ class Appstate extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: ( _ )=> ProductsServices(),
+          
           ),
       ] ,
       child: MyApp(),

@@ -6,13 +6,14 @@ import 'package:offside_yopal/models/product.dart';
 import 'package:http/http.dart' as http;
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 
-var globalemail;
+int cont =0;
 
 class ProductsServices extends ChangeNotifier{
   final String _baseUrl = 'offside-yopal-default-rtdb.firebaseio.com';
   final List<Product> products = [];
   late Product selectProduct;
 
+  
   File? newPictureFile;
 
   bool isLoading = true;
@@ -20,6 +21,7 @@ class ProductsServices extends ChangeNotifier{
 
   ProductsServices(){
       this.loadProduct();
+      
   }
         //TODO:<List<Product>>
   Future loadProduct() async{
@@ -33,11 +35,24 @@ class ProductsServices extends ChangeNotifier{
         productsMap.forEach((key, value) {
             final tempProduct = Product.fromMap(value);
             tempProduct.id = key;
-            this.products.add(tempProduct);
+
+
+            if (tempProduct.idAdmin == globalUser){
+                cont = cont+1;
+             print('/-/-/-/-/-/-/-//-/');
+              print(tempProduct.idAdmin);
+                  this.products.add(tempProduct);
+                  
+            }
+            print('___________________');
+            print(cont);
+  
         });
 
          this.isLoading = false;
         notifyListeners();
+                
+
 
         return this.products;
         

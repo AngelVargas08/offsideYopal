@@ -12,6 +12,8 @@ import 'package:offside_yopal/app/ui/pages/home/tabs/profile/widgets/label_butto
 import 'package:flutter_meedu/screen_utils.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:offside_yopal/app/ui/routes/routes.dart';
+import 'package:offside_yopal/models/models.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ProfileTab extends ConsumerWidget{
   const ProfileTab({Key? key}) : super(key: key);
@@ -125,7 +127,10 @@ class ProfileTab extends ConsumerWidget{
           onPressed: ()async{
             ProgressDialog.show(context);
             await  sessionProvider.read.cerrar();
-            router.popAndPushNamed(Routes.LOGIN);
+            router.pushNamedAndRemoveUntil(Routes.LOGIN);
+            
+          
+            
             //router.pop(Routes.LOGIN);
           },
          ),
@@ -138,3 +143,20 @@ class ProfileTab extends ConsumerWidget{
 }
 
 
+
+
+Future<void> _deleteCacheDir() async {
+  final cacheDir = await getTemporaryDirectory();
+
+  if (cacheDir.existsSync()) {
+    cacheDir.deleteSync(recursive: true);
+  }
+}
+
+Future<void> _deleteAppDir() async {
+  final appDir = await getApplicationSupportDirectory();
+
+  if (appDir.existsSync()) {
+    appDir.deleteSync(recursive: true);
+  }
+}

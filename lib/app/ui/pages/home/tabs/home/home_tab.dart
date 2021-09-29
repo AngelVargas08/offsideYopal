@@ -13,7 +13,8 @@ import 'package:provider/provider.dart';
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 
 
- 
+ bool isLoading = true;
+  bool isSaving = false;
 
 
 class Hometab extends StatelessWidget {
@@ -21,11 +22,11 @@ class Hometab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+        ProductsServices();
       final productsService = Provider.of<ProductsServices>(context);
       if(productsService.isLoading) return LoadingScreen();
 
-     
+       
 
     return Scaffold(
       appBar: AppBar(
@@ -42,10 +43,6 @@ class Hometab extends StatelessWidget {
              router.pushNamed(Routes.PRODUCT);
            },
 
-
-              /////////////aca es ome creo///////////////   
-              /// /////////////aca es ome creo///////////////    
-              ///  /////////////aca es ome creo///////////////   
           child: ProductCard(
               product: productsService.products[index],
           ),

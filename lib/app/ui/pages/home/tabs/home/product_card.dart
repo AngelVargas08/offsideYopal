@@ -1,12 +1,10 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 import 'package:offside_yopal/models/product.dart';
 
 
  var conexion = FirebaseDatabase.instance.reference();
 
- var admin;
 
 class ProductCard extends StatelessWidget {
   
@@ -20,28 +18,25 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-
+     /* 
      conexion.child("canchas").orderByChild('idAdmin').equalTo(globalUser).once()
      .then((DataSnapshot snapshot) {
 
         Map<dynamic,dynamic> map = snapshot.value;
         map.forEach((key, value) { 
-             print(['------------']);
+             print(['-+-+-+-+-+-+-+-+']);
            admin = (value['idAdmin']);
+           print(admin);
         });
-       
-            
-
-
-       /*
+   
        print('************************');
        print(snapshot.value);
        
        var ome = snapshot.value.entries.elementAt(1).key;
           print(':::::::::::::');
           print(ome);
-                        */
-    });
+                        
+    });*/
     
     return Padding(
       

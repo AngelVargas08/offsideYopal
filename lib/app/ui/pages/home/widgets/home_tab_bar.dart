@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:offside_yopal/app/ui/pages/home/home_pages.dart';
 import 'package:flutter_meedu/screen_utils.dart';
 
+
+
 class HomeTabBar extends StatelessWidget {
    HomeTabBar({Key? key}) : super(key: key);
   final _homeController = homeProvider.read;
@@ -10,13 +12,14 @@ class HomeTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
    final isDark = context.isDarkMode;
    final color = isDark? Colors.pinkAccent : Colors.blue;
+  
     return SafeArea(
       top: false,
       child: TabBar(
         labelColor: color,
         indicator: _CustomIndicator(color),
         unselectedLabelColor: isDark ? Colors.white30 : Colors.black26,
-        tabs: [
+        tabs: const [
           Tab(
             icon: Icon(Icons.home_rounded),
           ),
