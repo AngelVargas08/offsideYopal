@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [
         router.observer,
       ],
-      routes: appRoutes,
+      routes: appRoutes(context),
         
     );
           

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:offside_yopal/app/inject_dependencies.dart';
 import 'package:offside_yopal/services/products_services.dart';
 import 'package:offside_yopal/services/services.dart';
@@ -18,10 +19,10 @@ void main() async{
   await injectDependencies();
   router.setDefaultTransition(router.Transition.fadeIn);
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-      Appstate(),
+  initializeDateFormatting().then((_) => runApp(Appstate()));
       
-  );
+      
+  
   
 }
 

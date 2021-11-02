@@ -18,25 +18,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-     /* 
-     conexion.child("canchas").orderByChild('idAdmin').equalTo(globalUser).once()
-     .then((DataSnapshot snapshot) {
-
-        Map<dynamic,dynamic> map = snapshot.value;
-        map.forEach((key, value) { 
-             print(['-+-+-+-+-+-+-+-+']);
-           admin = (value['idAdmin']);
-           print(admin);
-        });
-   
-       print('************************');
-       print(snapshot.value);
-       
-       var ome = snapshot.value.entries.elementAt(1).key;
-          print(':::::::::::::');
-          print(ome);
-                        
-    });*/
+    
     
     return Padding(
       

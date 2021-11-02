@@ -2,17 +2,24 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/body.dart';
 import 'package:offside_yopal/models/product.dart';
 import 'package:http/http.dart' as http;
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 
 int cont =0;
+   
+var cancha2 = "minuto90@gmail.com";
+var cancha3 = "soccerfive@gmail.com";
 
 class ProductsServices extends ChangeNotifier{
   final String _baseUrl = 'offside-yopal-default-rtdb.firebaseio.com';
   final List<Product> products = [];
   late Product selectProduct;
 
+
+     
   
   File? newPictureFile;
 
@@ -25,7 +32,7 @@ class ProductsServices extends ChangeNotifier{
   }
         //TODO:<List<Product>>
   Future loadProduct() async{
-                
+                 
         this.isLoading = true;
         notifyListeners();
         final url = Uri.https(_baseUrl, 'canchas.json');
@@ -35,17 +42,18 @@ class ProductsServices extends ChangeNotifier{
         productsMap.forEach((key, value) {
             final tempProduct = Product.fromMap(value);
             tempProduct.id = key;
-
-
+            
             if (tempProduct.idAdmin == globalUser){
-                cont = cont+1;
-             print('/-/-/-/-/-/-/-//-/');
-              print(tempProduct.idAdmin);
-                  this.products.add(tempProduct);
-                  
+               
+                  this.products.add(tempProduct);    
+                } 
+                //TODO: MACHETAR CMO SEA
+            else if("minuto90@gmail.com"== tempProduct.idAdmin ){
+               
+                  this.products.add(tempProduct); 
+                     
             }
-            print('___________________');
-            print(cont);
+                
   
         });
 

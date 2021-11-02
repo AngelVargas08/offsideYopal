@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:offside_yopal/app/my_app.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/tabs/home/map.dart';
 
 
 
@@ -10,14 +12,32 @@ class FavoritestabUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        child:Column(
-          mainAxisSize: MainAxisSize.min,
-          
-          children: [
-            Text('Favorites USer',)
-          ],
-        ),
-        );
+    return Scaffold(
+      
+          body: OrientationBuilder(
+            builder: (_,orientation) {
+              if(orientation==Orientation.portrait){
+                return MyMap();
+              }
+              return Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  color: Colors.red,
+                )
+                ),
+              Expanded(
+                flex: 2,
+                child: MyMap(),
+              )
+            ],
+          );
+            }
+            ,),
+
+
+
+    );
   }
 }

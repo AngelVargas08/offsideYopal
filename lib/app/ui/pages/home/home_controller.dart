@@ -11,12 +11,12 @@ class HomeController extends SimpleNotifier{
        vsync: NavigatorState(),
        );
   }
-
+/*
   @override
   void dispose() {
     tabController.dispose();
     super.dispose();
   }
-
+*/
 
 }
