@@ -31,11 +31,9 @@ class CanchasScreen extends StatelessWidget {
          ],
        ),
       centerTitle: false,
-      actions: <Widget>[IconButton(
-        onPressed: (){
-          router.pushNamed(Routes.MYMAP);
-        },   
-        icon: SvgPicture.asset("assets/images/user/icons/notification.svg"))],
+      
+
+        
     );
   }
 }

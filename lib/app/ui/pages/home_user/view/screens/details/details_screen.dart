@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/constants.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/button_details.dart';
 import 'package:offside_yopal/app/ui/routes/routes.dart';
 import 'package:flutter_meedu/router.dart' as router;
+import 'package:offside_yopal/services/products_services.dart';
 
 import 'components/body.dart';
 
@@ -28,7 +30,9 @@ class DetailsScreen extends StatelessWidget {
       leading: IconButton(
         padding: const EdgeInsets.only(left: kDefaultPadding),
         icon: SvgPicture.asset("assets/images/user/icons/back.svg"), 
-        onPressed: (){
+        onPressed: (){         
+          ButtonDetails();
+          ProductsServices();
           Navigator.pop(context);
         },
       ),

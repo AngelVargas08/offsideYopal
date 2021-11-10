@@ -12,7 +12,7 @@ class TipoCanchas extends StatefulWidget {
 
 class _TipoCanchasState extends State<TipoCanchas> {
   int selectedIndex = 0;
-  List categorias = ['Fútbol 5', 'Fútbol 7', 'Fútbol 9', 'Fútbol 5'];
+  List categorias = ['Fútbol 5', 'Fútbol 7', 'Fútbol 9', 'Fútbol 11'];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,10 +36,7 @@ class _TipoCanchasState extends State<TipoCanchas> {
               right: index == categorias.length -1 ? kDefaultPadding: 0
             ),
             padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-            decoration: BoxDecoration(
-              color: index == selectedIndex ? Colors.white.withOpacity(0.4): Colors.transparent,
-              borderRadius: BorderRadius.circular(6)
-            ),
+            
             child: Text(
               categorias[index],
               style: const TextStyle(color: Colors.white),

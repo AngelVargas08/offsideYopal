@@ -5,6 +5,7 @@ import 'package:offside_yopal/app/ui/pages/home/home_pages.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/add_event.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/calendar.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/event_details.dart';
+import 'package:offside_yopal/app/ui/pages/home/tabs/notifications/details_reser.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/home_pages_user.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/tabs/home/map.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/tabs/home/products_user.dart';
@@ -31,6 +32,7 @@ Map<String, Widget Function(BuildContext)>  appRoutes(settings) => {
   Routes.MYMAP:(_)=>  const MyMap(),
   Routes.EVENTDETAILS:(_)=>   EventDetails(),
   Routes.PRODUCTUSER:(_)=>   HometabUSer(),
+  Routes.DETAILSRESERV:(_)=>   Notifitabb(),
 
 
    

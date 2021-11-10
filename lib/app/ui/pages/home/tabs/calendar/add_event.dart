@@ -46,7 +46,7 @@ class _AddEventState extends State<AddEvent> {
           Center(
           
             child: ElevatedButton(
-                     
+                    
               onPressed: ()async{
                       
                    FirebaseFirestore.instance.collection('events').where(

@@ -7,7 +7,7 @@ class HomeController extends SimpleNotifier{
   late TabController tabController;
   HomeController(){
     tabController = TabController(
-      length: 4,
+      length: 3,
        vsync: NavigatorState(),
        );
   }

@@ -3,11 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/components/search_box.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/button_details.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/details_screen.dart';
+import 'package:offside_yopal/models/models.dart';
 import '../../../constants.dart';
 import 'cancha_card.dart';
 import 'categoria_list.dart';
 
+
+var ubica = '';
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -42,6 +46,8 @@ class Body extends StatelessWidget {
                     itemIndex: index,
                     cancha: canchas[index],
                     press: (){
+                     ButtonDetails();
+                     ProductsServices();
                       Navigator.push(
                         context, 
                         MaterialPageRoute(

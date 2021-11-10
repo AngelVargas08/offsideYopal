@@ -9,9 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 
 int cont =0;
-   
-var cancha2 = "minuto90@gmail.com";
-var cancha3 = "soccerfive@gmail.com";
+  
 
 class ProductsServices extends ChangeNotifier{
   final String _baseUrl = 'offside-yopal-default-rtdb.firebaseio.com';
@@ -19,7 +17,7 @@ class ProductsServices extends ChangeNotifier{
   late Product selectProduct;
 
 
-     
+
   
   File? newPictureFile;
 
@@ -27,12 +25,11 @@ class ProductsServices extends ChangeNotifier{
   bool isSaving = false;
 
   ProductsServices(){
-      this.loadProduct();
-      
+        this.loadProduct();
+        print(emailcan);  
   }
         //TODO:<List<Product>>
-  Future loadProduct() async{
-                 
+  Future loadProduct() async{ 
         this.isLoading = true;
         notifyListeners();
         final url = Uri.https(_baseUrl, 'canchas.json');
@@ -41,33 +38,28 @@ class ProductsServices extends ChangeNotifier{
 
         productsMap.forEach((key, value) {
             final tempProduct = Product.fromMap(value);
-            tempProduct.id = key;
-            
+            tempProduct.id = key;                    
             if (tempProduct.idAdmin == globalUser){
-               
-                  this.products.add(tempProduct);    
-                } 
-                //TODO: MACHETAR CMO SEA
-            else if("minuto90@gmail.com"== tempProduct.idAdmin ){
-               
                   this.products.add(tempProduct); 
-                     
-            }
-                
+                } 
   
+          else if(tempProduct.idAdmin == emailcan){
+                    
+                this.products.add(tempProduct);
+                //print(emailcan);   
+                
+            }
+                   
+            
         });
 
          this.isLoading = false;
         notifyListeners();
                 
 
-
-        return this.products;
         
-        
+        return this.products;     
   }
-        
-
       Future saveOrCreateProduct(Product product)async{
 
         isSaving = true;

@@ -15,6 +15,7 @@ abstract class Routes {
   static const MYMAP ='/my-map';
   static const EVENTDETAILS ='/event-details';
   static const PRODUCTUSER ='/product-user';
+  static const DETAILSRESERV ='/details-reserv';
 
 
   

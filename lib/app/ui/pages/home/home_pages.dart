@@ -34,10 +34,8 @@ class HomePage extends StatelessWidget {
           controller: controller.tabController,
           children: const [
             Hometab(),
-            Favoritestab(),
             Notifitab(),
             ProfileTab(),
-            
           ],
           
           ),

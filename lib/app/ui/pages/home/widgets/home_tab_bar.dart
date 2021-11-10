@@ -23,9 +23,6 @@ class HomeTabBar extends StatelessWidget {
           Tab(
             icon: Icon(Icons.home_rounded),
           ),
-          Tab(
-            icon: Icon(Icons.sports_soccer),
-          ),
            Tab(
             icon: Icon(Icons.notifications),
           ),

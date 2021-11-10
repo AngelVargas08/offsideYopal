@@ -4,9 +4,11 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/details_screen.dart';
 import 'map_marker.dart';
 
-
+int prueba = 0;
 const MAPBOX_ACCESS_TOKEN =
     'pk.eyJ1IjoiamhvbmF0YW5nYXZpcmlhIiwiYSI6ImNrdHB4dmYxcTByN3YyeW11MzB4a3h5bTcifQ.Rqk_-zTqgT4b1fhTjYIfJg';
 const MAPBOX_STYLE = 'mapbox/dark-v10';
@@ -68,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
 
               onTap: (){
                 _selectedIndex =i;
+                  prueba = i;
                 setState(() {
                   isVisible = true;
                   _pageController.animateToPage(i, duration: const Duration(milliseconds: 500), curve: Curves.elasticOut);
@@ -265,11 +268,22 @@ class _MapItemDetails extends StatelessWidget {
               ),
               MaterialButton(
                 padding: EdgeInsets.zero,
-                onPressed: () => null, 
+                onPressed: () {
+                    print(prueba);
+                    Navigator.push(
+                        context, 
+                        MaterialPageRoute(
+                          builder: (context) => DetailsScreen(
+                            cancha: canchas[prueba],
+                          
+                          ),
+                        ),
+                      );
+                }, 
                 color: MARKER_COLOR,
                 elevation: 6,
                 child: Text(
-                  'LLAMAR', 
+                  'Reservar', 
                   style: TextStyle(fontWeight: FontWeight.bold),),
               ),
             ],

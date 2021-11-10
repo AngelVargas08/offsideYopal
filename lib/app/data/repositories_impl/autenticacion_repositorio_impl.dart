@@ -18,6 +18,7 @@ import 'package:flutter_meedu/router.dart' as router;
 
 
 var globalUser;
+var emailcan = "canchamaracana@gmail.com";
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository{
 

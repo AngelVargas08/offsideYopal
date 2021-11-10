@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/constants.dart';
-
+import 'package:offside_yopal/app/ui/routes/routes.dart';
+import 'package:flutter_meedu/router.dart' as router;
 
 
 class Notifitab extends StatelessWidget {
@@ -133,10 +134,24 @@ class Notifitab extends StatelessWidget {
                            child: CircularProgressIndicator()
                            ,)
                          );
+
+                         
                     },
                   ),
               ],
-            ));
+            ),
+
+            floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.equalizer),
+        onPressed: (){
+           router.pushNamed(Routes.DETAILSRESERV); 
+           //xfecha =  _selectedDay ;
+                       
+           /* 
+           Navigator.of(context).push(Routes.ADDEVENT(selectedDate: _selectedDay,))*/
+        },
+        ),
+            );
     
     
   

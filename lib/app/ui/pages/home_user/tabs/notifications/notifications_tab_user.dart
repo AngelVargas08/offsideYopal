@@ -63,6 +63,7 @@ class NotifitabUser extends StatelessWidget {
                                         title: Text(data['Titulo']),
                                         subtitle: Text(DateFormat("EEEE, dd,MMMM,yyyy ")
                                         .format(DateTime.fromMicrosecondsSinceEpoch(data['date']) ),
+                                        
                                         ),
                                         
                                         onTap: (){
@@ -71,7 +72,7 @@ class NotifitabUser extends StatelessWidget {
                                         trailing: IconButton(
                                           icon: Icon(Icons.delete),
                                           onPressed: ()async{
-
+                                              
                                   final confirm = await showDialog(
                                     context: context,
                                     builder: (copntext) => AlertDialog(
@@ -81,7 +82,8 @@ class NotifitabUser extends StatelessWidget {
                                           Image.asset('assets/images/user/images/sorpendida.png', fit: BoxFit.cover, height: 100)
                                         ],
                                       ),
-                                      content: Text("Estas seguro de Eliminar"),
+                                      content: Text("¿Estas seguro de Eliminar?",
+                                      textAlign: TextAlign.center),
                                       actions: [
                                         TextButton(
                                           
@@ -117,14 +119,15 @@ class NotifitabUser extends StatelessWidget {
                                     //Navigator.pop(context);
                                   }
                                 },
-                                          )
+                                          ),
+                                          
                                       );
                                 },                      
                               ),
                             ],
                           ),
                         );
-                      }
+                      }Divider(height: 15.0,color: Colors.red,);
                     //  }
                       return 
                        SizedBox(

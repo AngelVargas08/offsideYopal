@@ -3,23 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:offside_yopal/models/product.dart';
 
 
+
  var conexion = FirebaseDatabase.instance.reference();
 
+class ProductCard extends StatefulWidget {
 
-class ProductCard extends StatelessWidget {
   
-    final Product product;
+  final Product product;
+
   const ProductCard({
     Key? key,
-    required this.product
+     required this.product
     }) : super(key: key);
-    
-   
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
-    
-    
-    
+
     return Padding(
       
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -33,21 +37,20 @@ class ProductCard extends StatelessWidget {
             alignment: Alignment.bottomLeft,
              
             children: [     
-       
-              _BackgroungImage(product.picture),
+              _BackgroungImage(widget.product.picture),
               _ProductDetails(
-                title: product.name,
-                subTitle: product.id!,
+                title: widget.product.name,
+                subTitle: widget.product.id!,
               ),
               
                Positioned(
                 top: 0,
                 right: 0,
                 child: _PriceTag(
-                  product.price
+                  widget.product.price
                 ),
                 ),
-                if(!product.available)
+                if(!widget.product.available)
                  Positioned(
                 top: 0,
                 left: 0,
@@ -73,8 +76,13 @@ class ProductCard extends StatelessWidget {
   );
 }
 
-class _NotAvailable extends StatelessWidget {
+class _NotAvailable extends StatefulWidget {
 
+  @override
+  State<_NotAvailable> createState() => _NotAvailableState();
+}
+
+class _NotAvailableState extends State<_NotAvailable> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -102,12 +110,17 @@ class _NotAvailable extends StatelessWidget {
   }
 }
 
-class _PriceTag extends StatelessWidget {
+class _PriceTag extends StatefulWidget {
   final double price;
 
   const _PriceTag(
     this.price);
 
+  @override
+  State<_PriceTag> createState() => _PriceTagState();
+}
+
+class _PriceTagState extends State<_PriceTag> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -116,7 +129,7 @@ class _PriceTag extends StatelessWidget {
             fit: BoxFit.contain,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Text('\$$price',
+              child: Text('\$${widget.price}',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20
@@ -137,8 +150,7 @@ class _PriceTag extends StatelessWidget {
     );
   }
 }
-
-class _ProductDetails extends StatelessWidget {
+class _ProductDetails extends StatefulWidget {
   
     final String title;
     final String subTitle;
@@ -148,6 +160,11 @@ class _ProductDetails extends StatelessWidget {
     required this.subTitle
   });
 
+  @override
+  State<_ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<_ProductDetails> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -161,7 +178,7 @@ class _ProductDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
            Text(
-              title,
+              widget.title,
                 style: TextStyle(
                 fontSize: 18,
                 color: Colors.white,
@@ -170,7 +187,7 @@ class _ProductDetails extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               Text(
-              subTitle,
+              widget.subTitle,
                 style: TextStyle(
                 fontSize: 13,
                 color: Colors.white,
@@ -190,11 +207,16 @@ class _ProductDetails extends StatelessWidget {
   );
 }
 
-class _BackgroungImage extends StatelessWidget {
+class _BackgroungImage extends StatefulWidget {
 
  final String? url;
  const _BackgroungImage(this.url);
-  
+
+  @override
+  State<_BackgroungImage> createState() => _BackgroungImageState();
+}
+
+class _BackgroungImageState extends State<_BackgroungImage> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -202,20 +224,18 @@ class _BackgroungImage extends StatelessWidget {
         child: Container(
         width: double.infinity,
         height: 400,
-        child: url == null 
+        child: widget.url == null 
         ? Image(
           image: AssetImage('assets/images/dark/no-image.png'),
           fit: BoxFit.cover
           )
         : FadeInImage(
           placeholder: AssetImage('assets/images/dark/jar-loading.gif'),
-          image: NetworkImage(this.url!),
+          image: NetworkImage(this.widget.url!),
           fit: BoxFit.cover,
           )
           
       ),
     );
   }
-    
-    
 }

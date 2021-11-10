@@ -3,6 +3,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/constants.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/cancha_image.dart';
@@ -10,7 +11,9 @@ import 'button_details.dart';
 import 'list_of_colors.dart';
 
 var cancha1;
-String? emailcan;
+
+//String? emailcan;
+int uni = 0;
 class Body extends StatelessWidget {
   final Cancha? cancha;
   const Body({Key? key, this.cancha}) : super(key: key);
@@ -18,15 +21,8 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // size contine el ancho y largo del dispo
-    String t = cancha!.email;
-     emailcan = t;
-
-      print(emailcan);
-     if(emailcan == "minuto90@gmail.com"){
-       cancha1 = "minuto90@gmail.com";
-       print("dentro del if"+cancha1);
-     }
-    // print("Fuera del if"+cancha1);
+     emailcan = '${cancha!.email}';
+    uni = cancha!.id;
      
     Size size = MediaQuery.of(context).size;
     return SafeArea(
@@ -91,6 +87,7 @@ class Body extends StatelessWidget {
                 ],
               ),
             ),
+            
             ButtonDetails(),
           ],
         ),
