@@ -61,13 +61,13 @@ class Notifitab extends StatelessWidget {
 
                                       return ListTile(
                                       
-                                        title: Text(data['Titulo']),
+                                        title: Text(data['user_id']),
                                         subtitle: Text(DateFormat("EEEE, dd,MMMM,yyyy ")
-                                        .format(DateTime.fromMicrosecondsSinceEpoch(data['date']) ),
+                                        .format(DateTime.fromMicrosecondsSinceEpoch(data['date']) )+ data['descripcion'],
                                         ),
                                         
                                         onTap: (){
-                                              print('Tituloss'+data['Titulo']);
+                                              
                                         },
                                         trailing: IconButton(
                                           icon: Icon(Icons.delete),
