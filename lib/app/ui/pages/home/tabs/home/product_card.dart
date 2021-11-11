@@ -40,7 +40,7 @@ class _ProductCardState extends State<ProductCard> {
               _BackgroungImage(widget.product.picture),
               _ProductDetails(
                 title: widget.product.name,
-                subTitle: widget.product.id!,
+                //subTitle: widget.product.idAdmin!,
               ),
               
                Positioned(
@@ -102,7 +102,7 @@ class _NotAvailableState extends State<_NotAvailable> {
               width: 100,
               height: 70,
               decoration: BoxDecoration(
-                color: Colors.yellow[800],
+                color: Colors.red,
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(25), bottomRight: Radius.circular(25))
               ),
 
@@ -141,7 +141,7 @@ class _PriceTagState extends State<_PriceTag> {
           height : 70,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Colors.red,
+            color: Colors.yellow.shade800,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(25),
               bottomLeft: Radius.circular(25)
@@ -153,11 +153,11 @@ class _PriceTagState extends State<_PriceTag> {
 class _ProductDetails extends StatefulWidget {
   
     final String title;
-    final String subTitle;
+   // final String subTitle;
 
   const _ProductDetails({
     required this.title,
-    required this.subTitle
+    //required this.subTitle
   });
 
   @override
@@ -186,14 +186,14 @@ class _ProductDetailsState extends State<_ProductDetails> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              Text(
+             /* Text(
               widget.subTitle,
                 style: TextStyle(
                 fontSize: 13,
                 color: Colors.white,
                 )
                 
-              ),
+              ),*/
               
           ],
         ),
@@ -202,7 +202,7 @@ class _ProductDetailsState extends State<_ProductDetails> {
   }
 
   BoxDecoration _buildBoxDecoration() => BoxDecoration(
-    color: Colors.red,
+    color: Colors.green,
     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25), topRight: Radius.circular(25))
   );
 }

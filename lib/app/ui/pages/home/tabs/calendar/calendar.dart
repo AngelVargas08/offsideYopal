@@ -129,7 +129,7 @@ class _CalendarState extends State<Calendar> {
                      headerStyle:const HeaderStyle(
                        titleCentered: true,formatButtonVisible: false,
                        decoration:BoxDecoration(
-                         color: Colors.blueAccent
+                         color: Colors.green
                         ),
                           headerMargin: const EdgeInsets.only(bottom: 8.0)
                         ),
@@ -236,6 +236,7 @@ class _CalendarState extends State<Calendar> {
           
 
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.green,
         child: Icon(Icons.add),
         onPressed: (){
            router.pushNamed(Routes.ADDEVENT); 

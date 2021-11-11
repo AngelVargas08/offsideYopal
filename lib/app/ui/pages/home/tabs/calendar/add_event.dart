@@ -16,7 +16,7 @@ var hour = '';
  var fechadb = '';
  String? fecha;
 bool cambio = false;
-
+List<bool> pressButton = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
 
 class AddEvent extends StatefulWidget {
  
@@ -52,8 +52,7 @@ class _AddEventState extends State<AddEvent> {
                    FirebaseFirestore.instance.collection('events').where(
                      'descripcion', isEqualTo: hour).snapshots().listen((kk) {
                        kk.docs.forEach((element) {  
-                         print('*********');
-                         print(element.data());
+                         
                        fechadb = DateFormat("EEEE, dd,MMMM,yyyy ")
                           .format(DateTime.fromMicrosecondsSinceEpoch(element['date']) );
                           w = element['descripcion'];
@@ -67,7 +66,7 @@ class _AddEventState extends State<AddEvent> {
 
                       if(w == hour ){
                         
-                        print('no deberia');
+                      
                         showDialog(
                           context: context,
                            builder: (copntext) => AlertDialog(
@@ -140,7 +139,7 @@ class _AddEventState extends State<AddEvent> {
           
         ],
         
-        title: Text('Agendar Cita'),
+        title: Text('Agendar'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
@@ -150,29 +149,21 @@ class _AddEventState extends State<AddEvent> {
            child: Column(
              children: [
                 FormBuilderTextField(
-                  validator: FormBuilderValidators.compose([
-                    FormBuilderValidators.required(context),
-                  ]),
                   
+                  enabled: false,
+                  enableInteractiveSelection: false,
+                  //keyboardType: TextInputType.none,
                   name: 'Titulo',
+                 initialValue: emailcan,
+
                   
-                 // initialValue: 'Hola '+ globalUser + ' ,selecciona tu horario.',
-                  decoration: const InputDecoration(
-                   hintText: 'Agregar cita',
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    prefixIcon: Icon(Icons.person),
-                    
-                  )
-                  ,),
+                  ),
                   Divider(),
                   FormBuilderDateTimePicker(
                         validator: FormBuilderValidators.compose([
                           FormBuilderValidators.required(context)
                         ]),
+                        
                          name: "date",
                   initialValue: xfecha ??
                       DateTime.now(),
@@ -180,7 +171,9 @@ class _AddEventState extends State<AddEvent> {
                   fieldHintText: "Add Date",
                   initialDatePickerMode: DatePickerMode.day,
                   inputType: InputType.date,
+                  
                   format: DateFormat('EEEE, dd MMMM, yyyy'),
+                  //format: DateFormat('EEEE, dd MMMM, yyyy'),
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     prefixIcon: Icon(Icons.calendar_today_sharp),
@@ -203,39 +196,62 @@ class _AddEventState extends State<AddEvent> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[0] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '07:00 AM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
-                              
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=0){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[0]=!pressButton[0];
+                              });
                               hour = '7:00 AM';
                               
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[1] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '08:00 AM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=1){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[1]=!pressButton[1];
+                              });
                               hour = '8:00 AM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[2] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '09:00 AM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=2){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[2]=!pressButton[2];
+                              });
                               hour = '9:00 AM';
                             }
                             ),
@@ -247,37 +263,61 @@ class _AddEventState extends State<AddEvent> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[3] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '10:00 AM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=3){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[3]=!pressButton[3];
+                              });
                               hour = '10:00 AM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[4] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '11:00 AM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=4){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[4]=!pressButton[4];
+                              });
                               hour = '11:00 AM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[5] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '12:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=5){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[5]=!pressButton[5];
+                              });
                               hour = '12:00 PM';
                             }
                             ),
@@ -288,37 +328,61 @@ class _AddEventState extends State<AddEvent> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[6] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '01:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=6){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[6]=!pressButton[6];
+                              });
                               hour = '1:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[7] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '02:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=7){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[7]=!pressButton[7];
+                              });
                               hour = '2:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[8] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '03:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=8){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[8]=!pressButton[8];
+                              });
                               hour = '3:00 PM';
                             }
                             ),
@@ -329,37 +393,61 @@ class _AddEventState extends State<AddEvent> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[9] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '04:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=9){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[9]=!pressButton[9];
+                              });
                               hour = '4:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[10] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '05:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=10){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[10]=!pressButton[10];
+                              });
                               hour = '5:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[11] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '06:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=11){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[11]=!pressButton[11];
+                              });
                               hour = '6:00 PM';
                             }
                             ),
@@ -370,37 +458,61 @@ class _AddEventState extends State<AddEvent> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[12] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '07:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=12){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[12]=!pressButton[12];
+                              });
                               hour = '7:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[13] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '08:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=13){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[13]=!pressButton[13];
+                              });
                               hour = '8:00 PM';
                             }
                             ),
                             SizedBox( width: 15,),
                             RaisedButton(
-                            color: color,
+                            color: pressButton[14] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '09:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=14){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[14]=!pressButton[14];
+                              });
                               hour = '9:00 PM';
                             }
                             ),
@@ -411,13 +523,21 @@ class _AddEventState extends State<AddEvent> {
                          mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           RaisedButton(
-                            color: color,
+                            color: pressButton[15] ? Colors.grey : Colors.green,
                             textColor: Colors.white,
                             child: Text(
                               '10:00 PM',
                               style: TextStyle(fontSize: 17),
                             ),
                             onPressed: (){
+                              setState(() {
+                                for(var i =0; i <pressButton.length; i++){
+                                  if(i!=15){
+                                    pressButton[i]=false;
+                                  }
+                                }
+                                pressButton[15]=!pressButton[15];
+                              });
                               hour = '10:00 PM';
                             }
                             ),
@@ -425,7 +545,7 @@ class _AddEventState extends State<AddEvent> {
                       )
                     ],
                   ),
-                    Divider(),
+                    /*Divider(),
                     FormBuilderSwitch(
                     
                       name: 'Public', 
@@ -439,7 +559,7 @@ class _AddEventState extends State<AddEvent> {
                         errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
                         ),
-                      ),
+                      ),*/
                       Divider(),
 
                   Row(

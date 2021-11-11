@@ -36,7 +36,9 @@ class Notifitab extends StatelessWidget {
               children:<Widget>[        
               StreamBuilder(       
                     stream:              
-                         FirebaseFirestore.instance.collection("events").snapshots(),
+                         FirebaseFirestore.instance.collection("events")
+                         .where('Titulo', isEqualTo: globalUser)
+                         .snapshots(), 
                          
                          
                          

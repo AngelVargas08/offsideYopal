@@ -10,6 +10,7 @@ import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositor
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/add_event.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/model/app_event.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/services/event_firestore_service.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/constants.dart';
 import 'package:offside_yopal/app/ui/routes/routes.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:flutter/material.dart';
@@ -19,7 +20,12 @@ var xfecha;
 var  userID;
 var titleUser;
 var dateUser;
+var dateUser2;
 var descripcionUser;
+var selet;
+var temp = '';
+int w = 0;
+var qq;
 
  
 
@@ -33,55 +39,19 @@ class Notifitabb extends StatefulWidget {
   _CalendarState createState() => _CalendarState();
 }
 
+
 class _CalendarState extends State<Notifitabb> {
-    Map<DateTime,List<Evento>>? selectedEvents;
-    LinkedHashMap<DateTime, List<AppEvent>>? _groupedEvents;
-   DateTime _focusedDay = DateTime.now();
-    DateTime _selectedDay = DateTime.now();
-  @override
-    void didChangeDependencies() {
-      //context.read(pnProvider).init();
-      super.didChangeDependencies();  
-    }
-
-    int getHashCode(DateTime key){
-      return key.day * 1000000 + key.month * 10000 + key.year;
-    }
-
-  _groupEvents(List<AppEvent>events){
-    
-    _groupedEvents = LinkedHashMap(equals: isSameDay,hashCode: getHashCode);
-    events.forEach((event) {
-      DateTime date = DateTime.utc(event.date.year, event.date.month, event.date.day, 12);
-      
-      if(_groupedEvents![date] == null) _groupedEvents![date] = [];
-      _groupedEvents![date]!.add(event);
-      
-    });
-
-  }
-
- List<dynamic> _getEventsForDay(DateTime date){
-  
-     return _groupedEvents?[date]?? [];
-  }
-        //selector eventos
-        @override
-        void initState() {
-          selectedEvents = {};
-          super.initState();
-          
-        }
-
-        List<Evento> _getEventsfromDay(DateTime date){
-          return selectedEvents![date]?? [];
-        }
-
+  void changeValor(){
+  setState((){
+    temp = w.toString();
+  });
+}
   Widget build(BuildContext context) {
-    
+   
     return Scaffold(
       appBar: AppBar(
-        title: Text('Calendario'),
+        title: Text('Detalles Reservas'),
+        backgroundColor: Colors.green.shade600,
       ),
       body: SingleChildScrollView(
         child: StreamBuilder(
@@ -92,126 +62,83 @@ class _CalendarState extends State<Notifitabb> {
               children:<Widget>[        
               StreamBuilder(       
                     stream:              
-                         FirebaseFirestore.instance.collection("events").where('user_id', isEqualTo: globalUser)
-                         .snapshots(),
-                         
-                
+                         FirebaseFirestore.instance.collection("events")
+                         .where('Titulo', isEqualTo: globalUser)
+                         .snapshots(),     
+
                     builder: (  context, AsyncSnapshot snapshot){
 
                       if(snapshot.hasData){
                        List<DocumentSnapshot> events = snapshot.data.docs;        
                         return Container(
+                          
                           child: Column(
                             children: [
-                              Card(
+                              SizedBox(height: 100,),
+                              const Card(
                     clipBehavior: Clip.antiAlias,
-                    margin: const EdgeInsets.all(8.0),
-                    child: TableCalendar(
-                          locale: 'es_ES',
+                    margin: EdgeInsets.all(8.0),
+                    
+                   child: MyStatefulWidget(),
                           
-                          focusedDay: _focusedDay,
-                          selectedDayPredicate: (day) =>
-                              isSameDay(day, _selectedDay),
-                          firstDay: kFirstDay,
-                          lastDay: kLastDay,
-                          eventLoader: _getEventsfromDay,
-                          onDaySelected: (selectedDay, focusedDay) {
-                            setState(() {
-                              _selectedDay = selectedDay;
-                              _focusedDay = focusedDay;
-                            });
-                          },
-
-                       
-                          
-                     weekendDays: [6,7],
-                     headerStyle:const HeaderStyle(
-                       titleCentered: true,formatButtonVisible: false,
-                       decoration:BoxDecoration(
-                         color: Colors.blueAccent
-                        ),
-                          headerMargin: const EdgeInsets.only(bottom: 8.0)
-                        ),
-                     
-                     ),
                   ),
-                              ListView.builder(    
-
-                               shrinkWrap: true,
-                               physics: NeverScrollableScrollPhysics(),
-                                itemCount: events.length,
-                                itemBuilder: (_,i){
-                                  
-                                      Map  data = events[i].data() as Map;                        
-                                      dateUser = data['date'];
-                                      descripcionUser = data['Descripcion'];
-                                      titleUser = data['Titulo'];
-                                      var titulo = data['Titulo'];
+                  SizedBox(height: 100,),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          
+                          children: [
+                            
+                            RaisedButton(
+                                color: pressButton[0] ? Colors.grey : Colors.green,
+                                textColor: Colors.white,
+                                child: Text(
+                                  'Buscar',
+                                  style: TextStyle(fontSize: 17),
+                                ),
+                                onPressed: (){
+                                  changeValor();
+                               FirebaseFirestore.instance.collection("events")
+                                .where('Titulo', isEqualTo: globalUser)
+                                .snapshots().listen((event) {
+                                  event.docs.forEach((element) {
+                                    var y = element.data()['date'];
+                                  var t = DateFormat("MMMM")
+                                        .format(DateTime.fromMicrosecondsSinceEpoch(y));
+                                                int i =0;
                                        
-                                      
-                                        
-                                      
-                                      return ListTile(
-                                        title: Text(data['Titulo']),
-                                        subtitle: Text(DateFormat("EEEE, dd,MMMM,yyyy ")
-                                        .format(DateTime.fromMicrosecondsSinceEpoch(data['date']) )
-                                        ),
-                                        onTap: (){
-                                              print('Tituloss'+data['Titulo']);
-                                        },
-                                        trailing: IconButton(
-                                          icon: Icon(Icons.delete),
-                                          onPressed: ()async{
+                                      // print(t);
+                                            
+                                       if( t == selet){
+                                          w ++;
+                                       }
 
-                                  final confirm = await showDialog(
-                                    context: context,
-                                    builder: (copntext) => AlertDialog(
-                                      title: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset('assets/images/user/images/sorpendida.png', fit: BoxFit.cover, height: 100)
-                                        ],
-                                      ),
-                                      content: Text("Estas seguro de Eliminar"),
-                                      actions: [
-                                        TextButton(
-                                          
-                                          onPressed: () => Navigator.pop(context, true),
-                                          child: Text("Eliminar"),
-                                          
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(context, false),
-                                          child: Text("Cancelar",
-                                          style: TextStyle(color: Colors.grey.shade700),
-                                          ),
-                                        ),
-                                      ],
-                                    ),) ?? false; 
-                                  if(confirm){
-                                    //delete
-
-                                FirebaseFirestore.instance.collection("events").where('Titulo' 
-                                , isEqualTo: titulo).snapshots().listen((rs) { 
-                                rs.docs.forEach((element) {
-                               
-                                        print('titutulo '+data['Titulo']);
-                                    print('element.id '+element.id);
-                                FirebaseFirestore.instance
-                                .collection("events")
-                                .doc(element.id)
-                                .delete();
-                                    
-                                      });
-                                });
-                                 
-                                    //Navigator.pop(context);
                                   }
-                                },
-                                          )
-                                      );
-                                },                      
-                              ),
+                                  ); temp = 'En el mes de '+ qq + ' se reservaron '+ w.toString()+' canchas';
+                                  print(w);
+                                  w = 0;
+                                }
+                                );
+                               
+                                }
+                                ),
+                          ],
+                          ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 200,),
+                  Container(
+                    child: Column(
+                      children: [
+                        
+                        Text(temp,
+                        style: TextStyle(fontSize: 16),)
+                      ],),
+                  ),
+                             
                             ],
                           ),
                         );
@@ -237,4 +164,51 @@ class _CalendarState extends State<Notifitabb> {
      
     );
 }
-}   
+          }  class MyStatefulWidget extends StatefulWidget {
+            const MyStatefulWidget({Key? key}) : super(key: key);
+
+            @override
+            State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+          }
+
+          /// This is the private State class that goes with MyStatefulWidget.
+          class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+            String dropdownValue = 'Enero';
+                    
+            @override
+            Widget build(BuildContext context) {
+              return DropdownButton<String>(
+                value: dropdownValue,
+                icon: const Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: const TextStyle(color: Colors.green),
+                underline: Container(
+                  height: 2,
+                  color: Colors.green,
+                ),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropdownValue = newValue!;
+                  });
+                },
+                items: <String>['Enero', 'Febrero', 'Marzo', 'Abril','Mayo',
+                'Junio', 'Julio', 'Agosto','Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+                    .map<DropdownMenuItem<String>>((String value) {
+                    List<String> es = ['Enero', 'Febrero', 'Marzo', 'Abril','Mayo','Junio', 'Julio', 'Agosto','Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+                    List<String> en = ['January', 'February', 'March', 'April','May','June', 'July', 'August','September', 'October', 'November', 'December'];
+                    for(var i=0; i<es.length; i++){
+                      if(dropdownValue==es[i]){
+                        selet=en[i];
+                      }
+                    }
+                      qq = dropdownValue;
+              
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value, style: TextStyle(fontSize: 25),) ,
+                    
+                  );
+                }).toList(),
+              );
+  } }

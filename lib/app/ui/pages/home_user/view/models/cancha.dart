@@ -3,13 +3,16 @@ class Cancha {
   final String title, description, image, horario, email;
   final List<String> imgList;
 
-  Cancha({required this.id, required this.price, required this.title, 
-  required this.description, required this.image, required this.horario, 
-  required this.imgList, required this.email});
+  Cancha(
+      {required this.id,
+      required this.price,
+      required this.title,
+      required this.description,
+      required this.image,
+      required this.horario,
+      required this.imgList,
+      required this.email});
 }
-
-
-
 
 // lista de canchas
 List<Cancha> canchas = [
@@ -25,8 +28,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/EgHwWS5.jpg',
       'https://i.imgur.com/HgoYrPz.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 27, No. 24-10.",
   ),
   Cancha(
     id: 2,
@@ -40,8 +42,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/GlXjGyq.jpg',
       'https://i.imgur.com/lIrVIEX.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 11, No. 31-91",
   ),
   Cancha(
     id: 3,
@@ -55,8 +56,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/LYvYPbs.jpg',
       'https://i.imgur.com/rFIINBN.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 11, No. 33-51",
   ),
   Cancha(
     id: 4,
@@ -70,8 +70,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/qeurlDL.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 26, No. 10-28",
   ),
   Cancha(
     id: 5,
@@ -85,8 +84,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 28, No. 25-22",
   ),
   Cancha(
     id: 6,
@@ -100,8 +98,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Transversal 19, No. 26-30",
   ),
   Cancha(
     id: 7,
@@ -115,8 +112,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 11, No. 30",
   ),
   Cancha(
     id: 8,
@@ -130,8 +126,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Carrera 14, No. 25-30.",
   ),
   Cancha(
     id: 9,
@@ -145,8 +140,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 18, No. 25-17.",
   ),
   Cancha(
     id: 10,
@@ -160,8 +154,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Marginal de llano",
   ),
   Cancha(
     id: 11,
@@ -175,8 +168,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Carrera 10, No. 24-16.",
   ),
   Cancha(
     id: 12,
@@ -190,8 +182,7 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Calle 13, No. 24-05.",
   ),
   Cancha(
     id: 13,
@@ -205,9 +196,6 @@ List<Cancha> canchas = [
       'https://i.imgur.com/x3UjLl9.jpg',
       'https://i.imgur.com/EgHwWS5.jpg',
     ],
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
+    description: "Dirección: Carrera 29, No. 20-25",
   ),
-  
-  
 ];

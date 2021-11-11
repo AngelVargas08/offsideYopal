@@ -62,7 +62,7 @@ class NotifitabUser extends StatelessWidget {
                                       
                                         title: Text(data['Titulo']),
                                         subtitle: Text(DateFormat("EEEE, dd,MMMM,yyyy ")
-                                        .format(DateTime.fromMicrosecondsSinceEpoch(data['date']) ),
+                                        .format(DateTime.fromMicrosecondsSinceEpoch(data['date']))+ data['descripcion'],
                                         
                                         ),
                                         
