@@ -4,8 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:usesCleartextTraffic="true"
-        android:label="offside_yopal"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Offside Yopal"
+        android:icon="@mipmap/launcher_icon">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
          <activity android:name="com.facebook.FacebookActivity"

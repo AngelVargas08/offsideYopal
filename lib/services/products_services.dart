@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
-import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/body.dart';
 import 'package:offside_yopal/models/product.dart';
 import 'package:http/http.dart' as http;
 import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
@@ -26,7 +25,7 @@ class ProductsServices extends ChangeNotifier{
 
   ProductsServices(){
         this.loadProduct();
-        print(emailcan);  
+         
   }
         //TODO:<List<Product>>
   Future loadProduct() async{ 

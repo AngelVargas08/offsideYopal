@@ -66,6 +66,13 @@ dev_dependencies:
   freezed_annotation: ^0.14.3
   build_runner: ^2.1.1
   flutter_native_splash: ^1.2.4
+  flutter_launcher_icons:
+
+flutter_icons:
+  android: 'launcher_icon'
+  ios: false 
+  image_path: 'assets/images/icon.png'
+  adaptive_icon_background: 'assets/images/icon.png'
 
 flutter_native_splash:
   color: "#4EB163"

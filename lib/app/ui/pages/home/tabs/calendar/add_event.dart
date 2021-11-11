@@ -6,6 +6,7 @@ import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositor
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/calendar.dart';
 import 'package:offside_yopal/app/ui/pages/home/tabs/calendar/services/event_firestore_service.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/constants.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 var data;

@@ -12,7 +12,7 @@ import 'list_of_colors.dart';
 
 var cancha1;
 
-//String? emailcan;
+String? emailcan;
 int uni = 0;
 class Body extends StatelessWidget {
   final Cancha? cancha;

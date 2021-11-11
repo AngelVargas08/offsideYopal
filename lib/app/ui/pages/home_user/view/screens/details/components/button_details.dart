@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:offside_yopal/app/data/repositories_impl/autenticacion_repositorio_impl.dart';
 import 'package:offside_yopal/app/ui/pages/home_user/view/screens/cancha/components/cancha_card.dart';
+import 'package:offside_yopal/app/ui/pages/home_user/view/screens/details/components/body.dart';
 import 'package:offside_yopal/app/ui/routes/routes.dart';
 import 'package:flutter_meedu/router.dart' as router;
 import 'package:offside_yopal/app/ui/pages/home_user/view/models/cancha.dart';
@@ -21,7 +21,7 @@ class ButtonDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('segundavuelta');
+    print('++++++++++++++');
     print(emailcan);
     
 

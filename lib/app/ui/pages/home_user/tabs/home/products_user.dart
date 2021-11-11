@@ -35,7 +35,8 @@ class _HometabUSerState extends State<HometabUSer> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('user'),
+        backgroundColor: Colors.green,
+        title: Text('Cachas Disponibles'),
         //automaticallyImplyLeading: false,
       ),
       body: 

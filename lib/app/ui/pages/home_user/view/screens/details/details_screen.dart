@@ -25,7 +25,7 @@ class DetailsScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: kPrimaryColor,
       elevation: 0,
       leading: IconButton(
         padding: const EdgeInsets.only(left: kDefaultPadding),
